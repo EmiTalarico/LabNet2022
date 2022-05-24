@@ -10,7 +10,7 @@ namespace TP0
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello lab!");
+            Console.WriteLine("Hello World");
 
             Console.ReadLine();
         }
