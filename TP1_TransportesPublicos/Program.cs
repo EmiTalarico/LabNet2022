@@ -9,7 +9,11 @@ namespace TP1_TransportesPublicos
     internal class Program
     {
         static void Main(string[] args)
-        { 
+        {
+            //Color de fondo y letras de la consola.
+            Console.BackgroundColor = ConsoleColor.Magenta;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+
             //Listas donde se van a guardar los objetos correspondientes.
             List<Omnibus> lOmnibus = new List<Omnibus>();
             List<Taxi> lTaxi = new List<Taxi>();
@@ -35,9 +39,8 @@ namespace TP1_TransportesPublicos
                 {
                     case '1':
                         Console.Clear();
-                        Console.WriteLine(":::::MENU AGREGAR TRANSPORTE:::::");
-                        Console.WriteLine("");
-                        Console.WriteLine("\n\nTipo de transporte: ");
+                        Console.WriteLine(":::::MENU AGREGAR TRANSPORTE:::::");     
+                        Console.WriteLine("\nTipo de transporte: ");
                         Console.WriteLine("\n1 - Omnibus");
                         Console.WriteLine("2 - Taxi");
                         Console.WriteLine("ESC - Salir");
@@ -54,8 +57,7 @@ namespace TP1_TransportesPublicos
                                 try
                                 {
                                     Console.WriteLine(":::::MENU NUEVO OMNIBUS:::::");
-                                    Console.WriteLine("");
-                                    Console.WriteLine("\n\nIngrese los datos para el nuevo Omnibus:");
+                                    Console.WriteLine("\nIngrese los datos para el nuevo Omnibus:");
                                     Console.Write("Marca: ");
                                     string marca = Console.ReadLine();
                                     Console.Write("Motor: ");
@@ -66,7 +68,9 @@ namespace TP1_TransportesPublicos
 
                                     Omnibus omnibus = new Omnibus(marca, motor, pasajeros);
                                     lOmnibus.Add(omnibus);
+                                    Console.WriteLine("");
                                     Console.WriteLine("Omnibus agregado con éxito..");
+                                    Console.WriteLine("");
                                     Console.WriteLine("Presione una tecla para continuar..");
                                     Console.ReadKey(true);
                                 }
@@ -87,8 +91,7 @@ namespace TP1_TransportesPublicos
                                 try
                                 {
                                     Console.WriteLine(":::::MENU NUEVO TAXI:::::");
-                                    Console.WriteLine("");
-                                    Console.WriteLine("\n\nIngrese los datos para el nuevo Taxi:");
+                                    Console.WriteLine("\nIngrese los datos para el nuevo Taxi:");
                                     Console.Write("Marca: ");
                                     string marca = Console.ReadLine();
                                     Console.Write("Motor: ");
@@ -100,7 +103,9 @@ namespace TP1_TransportesPublicos
                                     Taxi taxi = new Taxi(marca, motor, pasajeros);
                                     lTaxi.Add(taxi);
 
+                                    Console.WriteLine("");
                                     Console.WriteLine("Taxi agregado con éxito..");
+                                    Console.WriteLine("");
                                     Console.WriteLine("Presione una tecla para continuar..");
                                     Console.ReadKey(true);
                                 }
