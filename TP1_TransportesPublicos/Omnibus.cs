@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 namespace TP1_TransportesPublicos
 {
     class Omnibus : TransportePublico
-    {
+    { 
+        //Constructor
         public Omnibus(string marca, string motor, int pasajeros) : base(marca, motor, pasajeros)
         {
         }
 
+        //Metodos
         public override void Avanzar()
         {
             Console.WriteLine("El omnibus está avanzando");
@@ -22,6 +24,7 @@ namespace TP1_TransportesPublicos
             Console.WriteLine("El omnibus se está detiendo");
         }
 
+        //Metodo para que se muestre a mi gusto el objeto.
         public override string ToString()
         {
             return "Marca: " + marca +

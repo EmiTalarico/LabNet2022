@@ -9,11 +9,14 @@ namespace TP1_TransportesPublicos
     internal class Program
     {
         static void Main(string[] args)
-        {
+        { 
+            //Listas donde se van a guardar los objetos correspondientes.
             List<Omnibus> lOmnibus = new List<Omnibus>();
             List<Taxi> lTaxi = new List<Taxi>();
+
             ConsoleKeyInfo opcion;
 
+            //Empieza el menú
             do
             {
                 Console.Clear();
@@ -27,7 +30,7 @@ namespace TP1_TransportesPublicos
                 do
                 {
                     opcion = Console.ReadKey(true);
-                } while (((int)opcion.KeyChar != 27) && (opcion.KeyChar < '1' || opcion.KeyChar > '2'));
+                } while (((int)opcion.KeyChar != 27) && (opcion.KeyChar < '1' || opcion.KeyChar > '2')); //!=27 es el boton ESC en ASCII
                 switch (opcion.KeyChar)
                 {
                     case '1':
