@@ -15,8 +15,7 @@ namespace Excepciones_UnitTest
                 Console.Clear();
                 Console.WriteLine(":::...MENU DIVISION POR CERO...:::");
                 Console.WriteLine("");
-                //Console.WriteLine("Ingrese un número: ");
-                //int numero = Convert.ToInt32(Console.ReadLine());
+
                 int resultado = (numero / 0);
                 Console.WriteLine(resultado);
             }
