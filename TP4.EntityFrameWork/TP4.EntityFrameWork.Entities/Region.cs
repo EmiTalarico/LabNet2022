@@ -7,12 +7,13 @@ namespace TP4.EntityFrameWork.Entities
     using System.Data.Entity.Spatial;
 
     [Table("Region")]
-    public partial class Region
+    public partial class Region : BaseEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Region()
         {
             Territories = new HashSet<Territories>();
+
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -24,5 +25,7 @@ namespace TP4.EntityFrameWork.Entities
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Territories> Territories { get; set; }
+
+
     }
 }

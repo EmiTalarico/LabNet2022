@@ -3,21 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TP4.EntityFrameWork.Data;
 using TP4.EntityFrameWork.Entities;
 
 namespace TP4.EntityFrameWork.Logic
 {
-    public class ProductsLogic : BaseLogic, ILogic<Products>
+    public class SuppliersLogic : BaseLogic, ILogic<Suppliers>
     {
-        
-
-        public ProductsLogic()
-        {
-           
-        }
-
-        public void Add(Products newRegion)
+        public void Add(Suppliers newSuppliers)
         {
             throw new NotImplementedException();
         }
@@ -27,12 +19,12 @@ namespace TP4.EntityFrameWork.Logic
             throw new NotImplementedException();
         }
 
-        public List<Products> GetAll()
+        public List<Suppliers> GetAll()
         {
-            return _context.Products.ToList();
+            return _context.Suppliers.ToList();
         }
 
-        public void Update(Products newRegion)
+        public void Update(Suppliers newSuppliers)
         {
             throw new NotImplementedException();
         }

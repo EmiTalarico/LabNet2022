@@ -81,8 +81,8 @@ namespace TP4.EntityFrameWork.Data
                 .IsFixedLength();
 
             modelBuilder.Entity<Region>()
-                .HasMany(e => e.Territories)
-                .WithRequired(e => e.Region)
+                .HasMany(r => r.Territories)
+                .WithRequired(t => t.Region)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Shippers>()
@@ -93,6 +93,11 @@ namespace TP4.EntityFrameWork.Data
             modelBuilder.Entity<Territories>()
                 .Property(e => e.TerritoryDescription)
                 .IsFixedLength();
+
+            modelBuilder.Entity<Territories>().ToTable("Territories");
+            modelBuilder.Entity<Territories>().HasKey(t => t.TerritoryID);
+
+
         }
     }
 }

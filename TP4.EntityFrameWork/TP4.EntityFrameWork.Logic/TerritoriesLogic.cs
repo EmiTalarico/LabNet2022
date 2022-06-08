@@ -8,16 +8,9 @@ using TP4.EntityFrameWork.Entities;
 
 namespace TP4.EntityFrameWork.Logic
 {
-    public class ProductsLogic : BaseLogic, ILogic<Products>
+    public class TerritoriesLogic : BaseLogic, ILogic<Territories>
     {
-        
-
-        public ProductsLogic()
-        {
-           
-        }
-
-        public void Add(Products newRegion)
+        public void Add(Territories newRegion)
         {
             throw new NotImplementedException();
         }
@@ -27,12 +20,16 @@ namespace TP4.EntityFrameWork.Logic
             throw new NotImplementedException();
         }
 
-        public List<Products> GetAll()
+        public List<Territories> GetAll()
         {
-            return _context.Products.ToList();
+            return _context.Territories.ToList();
+            //using (NorthwindContext otroContexto = new NorthwindContext())
+            //{
+            //    return otroContexto.Territories.Include("Region").ToList();
+            //}
         }
 
-        public void Update(Products newRegion)
+        public void Update(Territories newRegion)
         {
             throw new NotImplementedException();
         }
