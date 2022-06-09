@@ -12,12 +12,13 @@ namespace TP4.EntityFrameWork.UI
     {
         static void Main(string[] args)
         {
-
+            #region Color y letra de la consola
             //Color de fondo y letras de la consola.
             Console.BackgroundColor = ConsoleColor.Magenta;
             Console.ForegroundColor = ConsoleColor.Yellow;
+            #endregion
 
-
+            #region Menu principal
 
             ConsoleKeyInfo opcion;
             do
@@ -52,207 +53,219 @@ namespace TP4.EntityFrameWork.UI
                         break;
 
                     case '3':
-                        try
-                        {
-                            Console.Clear();
-                            Console.WriteLine(":::::::LIST SUPPLIERS::::::::");
-                            Console.WriteLine();
-                            MostrarSuppliers();
-                            Console.WriteLine("Presione una tecla para continuar...");
-                            Console.ReadKey(true);
-
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine("La explicación general es: " + ex.Message);
-                            Console.WriteLine("Presione una tecla para continuar...");
-                            Console.ReadKey(true); ;
-                        }
+                        MostrarSuppliers();
                         break;
 
                     case '4':
-                        try
-                        {
-                            Console.Clear();
-                            Console.WriteLine(":::::::LIST SHIPPERS::::::::");
-                            Console.WriteLine();
-                            MostrarShippers();
-                            Console.WriteLine("Presione una tecla para continuar...");
-                            Console.ReadKey(true);
-                        }
-                        catch (Exception ex)
-                        {
-
-                            Console.WriteLine("La explicación general es: " + ex.Message);
-                            Console.WriteLine("Presione una tecla para continuar...");
-                            Console.ReadKey(true);
-                        }
+                        MostrarShippers();
                         break;
 
                     case '5':
-                        try
-                        {
-                            Console.Clear();
-                            Console.WriteLine(":::::::NEW SHIPPERS::::::::");
-                            Console.WriteLine();
-                            AgregarShippers();
-                            Console.WriteLine("Shipper agregado con éxito...");
-                            Console.WriteLine("Presione una tecla para continuar...");
-                            Console.ReadKey(true);
-                        }
-                        catch (Exception ex)
-                        {
-
-                            Console.WriteLine("La explicación general es: " + ex.Message);
-                            Console.WriteLine("Presione una tecla para continuar...");
-                            Console.ReadKey(true);
-                        }
+                        AgregarShippers();
                         break;
 
                     case '6':
-                        try
-                        {
-                            Console.Clear();
-                            Console.WriteLine(":::::::MODIFY SHIPPERS::::::::");
-                            Console.WriteLine();
-                            ModificarShippers();
-                            Console.WriteLine("Shipper modificado con éxito...");
-                            Console.WriteLine("Presione una tecla para continuar...");
-                            Console.ReadKey(true);
-                        }
-                        catch (Exception ex)
-                        {
-
-                            Console.WriteLine("La explicación general es: " + ex.Message);
-                            Console.WriteLine("Presione una tecla para continuar...");
-                            Console.ReadKey(true);
-
-                        }
+                        ModificarShippers();
                         break;
 
                     case '7':
-                        try
-                        {
-                            Console.Clear();
-                            Console.WriteLine(":::::::DELETE SHIPPERS::::::::");
-                            Console.WriteLine();
-                            EliminarShippers();
-                            Console.WriteLine("Shipper elimnado con éxito...");
-                            Console.WriteLine("Presione una tecla para continuar...");
-                            Console.ReadKey(true);
-                        }
-                        catch (Exception ex)
-                        {
-
-                            Console.WriteLine("La explicación general es: " + ex.Message);
-                            Console.WriteLine("Presione una tecla para continuar...");
-                            Console.ReadKey(true);
-                        }
+                        EliminarShippers();
                         break;
                 }
             } while ((int)opcion.KeyChar != 27);
 
-
+            #endregion
         }
 
+        #region Metodos del ABM
         private static void EliminarShippers()
         {
-            Console.WriteLine();
-            ShippersLogic shippersLogic = new ShippersLogic();
-            foreach (var item in shippersLogic.GetAll())
+            try
             {
-                Console.WriteLine($"ID) {item.ShipperID} - Phone: {item.Phone} - Name: {item.CompanyName}");
+                Console.Clear();
+                Console.WriteLine(":::::::DELETE SHIPPERS::::::::");
+                Console.WriteLine();
+                Console.WriteLine();
+                ShippersLogic shippersLogic = new ShippersLogic();
+                foreach (var item in shippersLogic.GetAll())
+                {
+                    Console.WriteLine($"ID) {item.ShipperID} - Phone: {item.Phone} - Name: {item.CompanyName}");
+                }
+                Console.WriteLine();
+                Console.WriteLine("Ingrese el ID del shipper a eliminar: ");
+                int id = Convert.ToInt32(Console.ReadLine());
+                shippersLogic.Delete(id);
+                Console.WriteLine("Shipper elimnado con éxito...");
+                Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey(true);
             }
-            Console.WriteLine();
-            Console.WriteLine("Ingrese el ID del shipper a eliminar: ");
-            int id = Convert.ToInt32(Console.ReadLine());
-            shippersLogic.Delete(id);
-
+            catch (Exception ex)
+            {
+                Console.WriteLine("La explicación general es: " + ex.Message);
+                Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey(true); ;
+            }
         }
 
         private static void ModificarShippers()
         {
-            Console.WriteLine();
-            ShippersLogic shippersLogic = new ShippersLogic();
-            foreach (var item in shippersLogic.GetAll())
+            try
             {
-                Console.WriteLine($"ID) {item.ShipperID} - Phone: {item.Phone} - Name: {item.CompanyName}");
+                Console.Clear();
+                Console.WriteLine(":::::::MODIFY SHIPPERS::::::::");
+                Console.WriteLine();
+                ShippersLogic shippersLogic = new ShippersLogic();
+                foreach (var item in shippersLogic.GetAll())
+                {
+                    Console.WriteLine($"ID) {item.ShipperID} - Phone: {item.Phone} - Name: {item.CompanyName}");
+                }
+                Console.WriteLine();
+                Console.WriteLine("Ingrese el Id del shipper a modificar:");
+                int id = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Ingrese el nuevo telefono: ");
+                string phone = Console.ReadLine();
+                Console.WriteLine("Ingrese el nuevo nombre: ");
+                string name = Console.ReadLine();
+
+                shippersLogic.Update(new Shippers
+                {
+                    ShipperID = id,
+                    Phone = phone,
+                    CompanyName = name
+                });
+                Console.WriteLine("Shipper modificado con éxito...");
+                Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey(true);
             }
-            Console.WriteLine();
-            Console.WriteLine("Ingrese el Id del shipper a modificar:");
-            int id = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Ingrese el nuevo telefono: ");
-            string phone = Console.ReadLine();
-            Console.WriteLine("Ingrese el nuevo nombre: ");
-            string name = Console.ReadLine();
-
-            shippersLogic.Update(new Shippers
+            catch (Exception ex)
             {
-                ShipperID = id,
-                Phone = phone,
-                CompanyName = name
-            });
-
+                Console.WriteLine("La explicación general es: " + ex.Message);
+                Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey(true); ;
+            }
         }
 
         private static void AgregarShippers()
         {
-            Console.WriteLine("");
-            ShippersLogic shippersLogic = new ShippersLogic();
-            Console.WriteLine("Ingrese el nombre de la compañia: ");
-            string companyName = Console.ReadLine();
-            Console.WriteLine("Ingrese el teléfono: ");
-            string phone = Console.ReadLine();
-
-            shippersLogic.Add(new Shippers
+            try
             {
-                CompanyName = companyName,
-                Phone = phone
-            });
+                Console.Clear();
+                Console.WriteLine(":::::::NEW SHIPPERS::::::::");
+                Console.WriteLine("");
+                ShippersLogic shippersLogic = new ShippersLogic();
+                Console.WriteLine("Ingrese el nombre de la compañia: ");
+                string companyName = Console.ReadLine();
+                Console.WriteLine("Ingrese el teléfono: ");
+                string phone = Console.ReadLine();
+
+                shippersLogic.Add(new Shippers
+                {
+                    CompanyName = companyName,
+                    Phone = phone
+                });
+                Console.WriteLine("Shipper agregado con éxito...");
+                Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey(true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("La explicación general es: " + ex.Message);
+                Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey(true);
+            }
         }
 
         private static void MostrarShippers()
         {
-           Console.WriteLine();
-           ShippersLogic shippersLogic = new ShippersLogic();
-            foreach (var item in shippersLogic.GetAll())
+            try
             {
-                Console.WriteLine($"ID) {item.ShipperID} - Phone: {item.Phone} - Name: {item.CompanyName}");
+                Console.Clear();
+                Console.WriteLine(":::::::LIST SHIPPERS::::::::");
+                Console.WriteLine();
+                Console.WriteLine();
+                ShippersLogic shippersLogic = new ShippersLogic();
+                foreach (var item in shippersLogic.GetAll())
+                {
+                    Console.WriteLine($"ID) {item.ShipperID} - Phone: {item.Phone} - Name: {item.CompanyName}");
+                }
+                Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey(true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("La explicación general es: " + ex.Message);
+                Console.WriteLine("Presione una tecla para continuar..."); ;
             }
         }
 
         private static void MostrarSuppliers()
         {
-            Console.WriteLine();
-            SuppliersLogic suppliersLogic = new SuppliersLogic();
-            foreach (var item in suppliersLogic.GetAll())
+            try
             {
-                Console.WriteLine($"ID) {item.SupplierID} - Phone: {item.Phone} - Name: {item.CompanyName}");
-            }
-        }
-
-        public static void MostrarRegiones()
-        {
-            Console.WriteLine();
-            RegionLogic regionLogic = new RegionLogic();
-
-            foreach (var item in regionLogic.GetAll())
-            {
-                Console.WriteLine($"{item.RegionID} - {item.RegionDescription}");
-            }
-            Console.ReadKey(true);
-        }
-
-        public static void MostrarProductos()
-        {
-            Console.WriteLine();
-            ProductsLogic productoLogic = new ProductsLogic();
-            foreach (var item in productoLogic.GetAll())
-            {
-                Console.WriteLine($"{item.ProductID} - {item.ProductName}");
-            }
+                Console.Clear();
+                Console.WriteLine(":::::::LIST SUPPLIERS::::::::");
+                Console.WriteLine();
+                SuppliersLogic suppliersLogic = new SuppliersLogic();
+                foreach (var item in suppliersLogic.GetAll())
+                {
+                    Console.WriteLine($"ID) {item.SupplierID} - Phone: {item.Phone} - Name: {item.CompanyName}");
+                }
+                Console.WriteLine("");
+                Console.WriteLine("Presione una tecla para continuar...");
                 Console.ReadKey(true);
-            
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("La explicación general es: " + ex.Message);
+                Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey(true);
+            }
+
         }
+
+        private static void MostrarRegiones()
+        {
+            try
+            {
+                Console.WriteLine();
+                RegionLogic regionLogic = new RegionLogic();
+
+                foreach (var item in regionLogic.GetAll())
+                {
+                    Console.WriteLine($"{item.RegionID} - {item.RegionDescription}");
+                }
+                Console.ReadKey(true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("La explicación general es: " + ex.Message);
+                Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey(true);
+            }
+        }
+
+        private static void MostrarProductos()
+        {
+            try
+            {
+                Console.WriteLine();
+                ProductsLogic productoLogic = new ProductsLogic();
+                foreach (var item in productoLogic.GetAll())
+                {
+                    Console.WriteLine($"{item.ProductID} - {item.ProductName}");
+                }
+                Console.ReadKey(true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("La explicación general es: " + ex.Message);
+                Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey(true); ;
+            }
+
+
+        }
+
+        #endregion
     }
 }
