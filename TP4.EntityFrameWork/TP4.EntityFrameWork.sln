@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP4.EntityFrameWork.Logic",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP4.EntityFrameWork.LogicTests", "TP4.EntityFrameWork.LogicTests\TP4.EntityFrameWork.LogicTests.csproj", "{4D772BE9-4FAB-4133-98F7-A03CCCE4563D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP4.EntityFrameWork.Web", "TP4.EntityFrameWork.Web\TP4.EntityFrameWork.Web.csproj", "{9D6EB31B-15AB-45E2-B941-C5615B46AC03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{4D772BE9-4FAB-4133-98F7-A03CCCE4563D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D772BE9-4FAB-4133-98F7-A03CCCE4563D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D772BE9-4FAB-4133-98F7-A03CCCE4563D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D6EB31B-15AB-45E2-B941-C5615B46AC03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D6EB31B-15AB-45E2-B941-C5615B46AC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D6EB31B-15AB-45E2-B941-C5615B46AC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D6EB31B-15AB-45E2-B941-C5615B46AC03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
