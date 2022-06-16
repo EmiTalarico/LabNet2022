@@ -14,5 +14,7 @@ namespace TP4.EntityFrameWork.Logic
         void Add(T newRegion);
         void Delete(int id);
         void Update(T newRegion);
+
+        //
     }
 }
