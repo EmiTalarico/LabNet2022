@@ -1,0 +1,16 @@
+﻿@model TP4.EntityFrameWork.Web.Models.SuppliersView
+@{
+    ViewBag.Title = "Editar Supplier";
+}
+
+<h1>Editar Supplier</h1>
+
+@using (Html.BeginForm("Update", "Suppliers", FormMethod.Post))
+{
+    <label>Nombre: </label> @Html.TextBoxFor(s => s.Nombre)
+    <label>Dirección: </label> @Html.TextBoxFor(s => s.Direccion)
+    <label>Teléfono: </label> @Html.TextBoxFor(s => s.Telefono)
+
+    <input type="submit" class="btn btn-success" value="Editar" , onclick="return confirm('¿Confirmar cambios?')" />
+    @Html.TextBoxFor(s => s.Id, new { @class = "invisible" })
+}

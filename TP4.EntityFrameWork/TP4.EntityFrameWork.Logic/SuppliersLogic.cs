@@ -11,12 +11,18 @@ namespace TP4.EntityFrameWork.Logic
     {
         public void Add(Suppliers newSuppliers)
         {
-            throw new NotImplementedException();
+            _context.Suppliers.Add(newSuppliers);
+
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var supplierAEliminar = _context.Suppliers.Find(id);
+
+            _context.Suppliers.Remove(supplierAEliminar);
+
+            _context.SaveChanges();
         }
 
         public List<Suppliers> GetAll()
@@ -24,9 +30,16 @@ namespace TP4.EntityFrameWork.Logic
             return _context.Suppliers.ToList();
         }
 
-        public void Update(Suppliers newSuppliers)
+        public void Update(Suppliers supplier)
         {
-            throw new NotImplementedException();
+            var supplierUpdate = _context.Suppliers.Find(supplier.SupplierID);
+
+            supplierUpdate.CompanyName = supplier.CompanyName;
+            supplierUpdate.Address = supplier.Address;
+            supplierUpdate.Phone = supplier.Phone;
+
+
+            _context.SaveChanges();
         }
     }
 }

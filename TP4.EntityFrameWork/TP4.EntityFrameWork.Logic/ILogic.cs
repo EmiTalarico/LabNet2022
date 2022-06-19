@@ -11,9 +11,9 @@ namespace TP4.EntityFrameWork.Logic
     {
         List<T> GetAll();
 
-        void Add(T newRegion);
+        void Add(T elemento);
         void Delete(int id);
-        void Update(T newRegion);
+        void Update(T elemento);
 
         //
     }

@@ -1,0 +1,45 @@
+﻿@model List<TP4.EntityFrameWork.Web.Models.SuppliersView>
+
+@{
+    ViewBag.Title = "Suppliers";
+}
+
+<div class="container">
+
+    <div class="row">
+        <h1>Empleados</h1>
+
+        <div style="margin-bottom:20px;">
+            @Html.ActionLink("Agregar Supplier", "Insert", new { area = "" }, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-striped table-dark rounded-lg table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Teléfono</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var supplier in Model)
+                {
+                <tr>
+                    <th scope="row">@supplier.Id</th>
+                    <td>@supplier.Nombre</td>
+                    <td>@supplier.Direccion</td>
+                    <td>@supplier.Telefono</td>
+                    <td>
+                        @Html.ActionLink("Borrar", "Delete", new { id = supplier.Id }, new { @class = "btn btn-danger", onclick = "return confirm('¿Confirmar borrado del shipper?')" })
+                        @Html.ActionLink("Editar", "Update", new { id = supplier.Id }, new { @class = "btn btn-info" })
+                    </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

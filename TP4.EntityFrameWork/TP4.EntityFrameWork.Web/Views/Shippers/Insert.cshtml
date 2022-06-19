@@ -1,0 +1,17 @@
+﻿@model TP4.EntityFrameWork.Web.Models.ShippersView
+@{
+    ViewBag.Title = "Insertar Shipper";
+}
+
+<h1>Insertar Shipper</h1>
+
+@using (Html.BeginForm("Insert", "Shippers", FormMethod.Post))
+{
+    <label>Nombre: </label> @Html.TextBoxFor(s => s.Nombre)
+    @Html.ValidationMessageFor(s => s.Nombre)
+    <br />
+    <label>Teléfono: </label> @Html.TextBoxFor(s => s.telefono)
+    @Html.ValidationMessageFor(s => s.telefono)
+    <br />
+    <input type="submit" class="btn btn-success" value="Guardar" , onclick="return confirm('¿Crear nuevo Shipper?')" />
+}
