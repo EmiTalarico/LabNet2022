@@ -10,12 +10,11 @@ namespace TP4.EntityFrameWork.Web.Models
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "El nombre es obligatorio")]
         [Display(Name = "Nombre")]
-        [Required]
         public string Nombre { get; set; }
 
         [Required(ErrorMessage = "El telefono es obligatorio")]
-        [StringLength(25, ErrorMessage = "El {0} debe ser al menos {2} y maximo {1} caracteres", MinimumLength = 8)]
         [Display(Name = "telefono")]
         public string telefono { get; set; }
     }

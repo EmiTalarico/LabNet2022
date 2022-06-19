@@ -7,9 +7,18 @@
 
 @using (Html.BeginForm("Insert", "Suppliers", FormMethod.Post))
 {
-    <label>Nombre: </label> @Html.TextBoxFor(s => s.Nombre)
-    <label>Dirección: </label> @Html.TextBoxFor(s => s.Direccion)
+    <label>Nombre: </label>
+    @Html.TextBoxFor(s => s.Nombre)
+    @Html.ValidationMessageFor(s => s.Nombre)
+    <br />
+
+    <label>Dirección: </label>
+    @Html.TextBoxFor(s => s.Direccion)
+    @Html.ValidationMessageFor(s => s.Direccion)
+    <br />
+
     <label>Teléfono: </label> @Html.TextBoxFor(s => s.Telefono)
+    <br />
 
     <input type="submit" class="btn btn-success" value="Guardar" , onclick="return confirm('¿Crear nuevo Supplier?')" />
 }

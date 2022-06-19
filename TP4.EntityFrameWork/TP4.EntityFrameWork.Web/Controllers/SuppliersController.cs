@@ -45,22 +45,26 @@ namespace TP4.EntityFrameWork.Web.Controllers
         {
             try
             {
-            var supplierEntity = new Suppliers
-            {
-                CompanyName = suppliersView.Nombre,
-                Address = suppliersView.Direccion,
-                Phone = suppliersView.Telefono
-            };
-            suppliersLogic.Add(supplierEntity);
+                if (ModelState.IsValid)
+                {
+                    var supplierEntity = new Suppliers
+                    {
+                        CompanyName = suppliersView.Nombre,
+                        Address = suppliersView.Direccion,
+                        Phone = suppliersView.Telefono
+                    }; 
+                    suppliersLogic.Add(supplierEntity);
+
+                    return RedirectToAction("Index");
+                }
            
-            return RedirectToAction("Index");
             }
             catch (Exception)
             {
-
-                return RedirectToAction("About", "Home");
+                return View(suppliersView);
+                //return RedirectToAction("About", "Home");
             }
-
+            return View();
         }
 
 

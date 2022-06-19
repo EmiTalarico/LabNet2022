@@ -60,16 +60,17 @@ namespace TP4.EntityFrameWork.Web.Controllers
                 shippersLogic.Add(shippersEntity);
 
                 //TempData["mensaje"] = "El shipper se ha añadido correctamente";
-                return RedirectToAction("Index" , shippersView);
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            //
 
             }
             catch (Exception)
             {
-
-                return RedirectToAction("About", "Home");
+                return View(shippersView);
+                //return RedirectToAction("About", "Home");
             }
+            return View();
 
         }
 

@@ -7,11 +7,17 @@
 
 @using (Html.BeginForm("Insert", "Shippers", FormMethod.Post))
 {
-    <label>Nombre: </label> @Html.TextBoxFor(s => s.Nombre)
+    <label>Nombre: </label>
+    @Html.TextBoxFor(s => s.Nombre)
     @Html.ValidationMessageFor(s => s.Nombre)
+
     <br />
-    <label>Teléfono: </label> @Html.TextBoxFor(s => s.telefono)
+    @*@Html.ValidationMessage("Nombre ", "Por favor, ingrese un nombre.", "text-danger")
+        <br />*@
+    <label>Teléfono: </label>
+    @Html.TextBoxFor(s => s.telefono)
     @Html.ValidationMessageFor(s => s.telefono)
+
     <br />
     <input type="submit" class="btn btn-success" value="Guardar" , onclick="return confirm('¿Crear nuevo Shipper?')" />
 }
