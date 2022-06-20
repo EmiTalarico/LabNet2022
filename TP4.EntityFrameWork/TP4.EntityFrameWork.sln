@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP4.EntityFrameWork.LogicTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP4.EntityFrameWork.Web", "TP4.EntityFrameWork.Web\TP4.EntityFrameWork.Web.csproj", "{9D6EB31B-15AB-45E2-B941-C5615B46AC03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP4.EntityFrameWork.PublicAPI", "TP4.EntityFrameWork.PublicAPI\TP4.EntityFrameWork.PublicAPI.csproj", "{663FA1A6-9418-4ECF-893F-ED2886051AFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{9D6EB31B-15AB-45E2-B941-C5615B46AC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D6EB31B-15AB-45E2-B941-C5615B46AC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D6EB31B-15AB-45E2-B941-C5615B46AC03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{663FA1A6-9418-4ECF-893F-ED2886051AFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{663FA1A6-9418-4ECF-893F-ED2886051AFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{663FA1A6-9418-4ECF-893F-ED2886051AFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{663FA1A6-9418-4ECF-893F-ED2886051AFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
