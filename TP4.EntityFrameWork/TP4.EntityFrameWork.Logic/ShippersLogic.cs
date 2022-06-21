@@ -25,6 +25,12 @@ namespace TP4.EntityFrameWork.Logic
             _context.SaveChanges();
         }
 
+        public Shippers GetOne(int id)
+        {
+            Shippers shipper;
+            shipper = _context.Shippers.Find(id);
+            return shipper;
+        }
         public List<Shippers> GetAll()
         {
             return _context.Shippers.ToList();

@@ -1,24 +1,28 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
-</div>
+﻿@model IEnumerable<TP4.EntityFrameWork.PublicAPI.Models.HPotterView>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="h2">Personajes de Harry Potter</h2>
+
+
+
+        <div class="card" style="width: 18rem;">
+            @foreach (var item in Model)
+            {
+
+                <img src="@item.Image" class="card-img-top" alt="imagen" width="150" height="150">
+
+                <div class="card-body">
+                    <h3 class="card-title"><b>@Html.DisplayFor(modelItem => item.Name)</b></h3>
+                    <p class="card-text"> <b><u>Specie: </u></b><i>@Html.DisplayFor(modelItem => item.Species)</i></p>
+                    <p class="card-text"> <b><u>Gender: </u></b><i>@Html.DisplayFor(modelItem => item.Gender)</i></p>
+                    <p class="card-text"> <b><u>House:</u></b>  <i>@Html.DisplayFor(modelItem => item.House)</i></p>
+                    <br />
+
+                </div>
+            }
+        </div>
+
+       
