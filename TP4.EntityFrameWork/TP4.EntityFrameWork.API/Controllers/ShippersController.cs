@@ -120,6 +120,7 @@ namespace TP4.EntityFrameWork.API.Controllers
                 try
                 {
                     {
+                        shippersLogic.Delete(id);
                         return Ok("Delete Ok!");
                 }
             }
