@@ -1,0 +1,27 @@
+<div class="alert alert-danger" *ngIf="mensaje">
+  {{mensaje}}
+</div>
+
+<div class="container">
+
+    <form [formGroup]="formulario"(ngSubmit)="Guardar()">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Nombre</span>
+            <input type="text" class="form-control" formControlName="Nombre" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1">
+            <span *ngIf="formulario.controls['Nombre'].errors && formulario.controls['Nombre'].touched"> Campo requerido </span>
+          </div>
+    
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Telefono</span>
+            <input type="text" class="form-control" formControlName="Telefono" placeholder="Telefono" aria-label="Telefono" aria-describedby="basic-addon1">
+            <span *ngIf="formulario.controls['Telefono'].errors && formulario.controls['Telefono'].touched"> Campo requerido </span>
+          </div>
+          <input type="hidden" formControlName="Id">
+        <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid">
+         Guardar
+        </button>
+    </form>
+
+</div>
+
+
