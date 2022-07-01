@@ -23,6 +23,14 @@ export class ShippersServicesService {
     return this.http.delete<Shippers>(this.urlBase+'/'+id)
   }
 
+  getShippersById(id:Number):Observable<Shippers> {
+    return this.http.get<Shippers>(this.urlBase+'/'+id)
+  }
+
+  patchShippers(shipper: Shippers):Observable<Shippers> {
+    return this.http.patch<Shippers>(this.urlBase,shipper)
+  }
+
 
   }
 

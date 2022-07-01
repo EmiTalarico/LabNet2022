@@ -1,3 +1,7 @@
+<div class="alert alert-danger" *ngIf="mensaje">
+    {{mensaje}}
+</div>
+
 <table class ="table">
     <thead>
         <tr>
@@ -29,8 +33,9 @@
             </td>
             <td>
               <button class="btn btn-primary" [routerLink]="['/editar',item.Id]">Editar</button>
-              <button class="btn btn-danger" [routerLink]="['/eliminar',item.Id]">Eliminar</button>
+              <button class="btn btn-danger" (click)="eliminar(item.Id!)">Eliminar</button>
             </td>
         </tr>
     </tbody>
 </table>
+

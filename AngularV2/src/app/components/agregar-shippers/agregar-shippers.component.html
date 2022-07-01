@@ -1,3 +1,7 @@
+<div class="alert alert-danger" *ngIf="mensaje">
+  {{mensaje}}
+</div>
+
 <div class="container">
 
     <form [formGroup]="formulario"(ngSubmit)="Guardar()">
@@ -12,8 +16,10 @@
             <input type="text" class="form-control" formControlName="Telefono" placeholder="Telefono" aria-label="Telefono" aria-describedby="basic-addon1">
             <span *ngIf="formulario.controls['Telefono'].errors && formulario.controls['Telefono'].touched"> Campo requerido </span>
           </div>
-       
-        <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid">Enviar</button>
+          <input type="hidden" formControlName="Id">
+        <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid">
+         Guardar
+        </button>
     </form>
 
 </div>

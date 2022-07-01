@@ -9,10 +9,10 @@ import { ShippersServicesService } from 'src/app/services/shippers-services.serv
 })
 export class ListadoShippersComponent implements OnInit {
 
-  shippers!:Shippers[]
+  shippers!: Shippers[]
+  mensaje: string = ''
 
-  constructor(private services:ShippersServicesService) 
-  { 
+  constructor(private services: ShippersServicesService) {
     this.services.getShippers().subscribe(s => this.shippers = s);
   }
 
@@ -20,11 +20,22 @@ export class ListadoShippersComponent implements OnInit {
 
   }
 
-  eliminar(id:number){
-    
-    this.services.deleteShippers(id).subscribe(resp => {this.shippers = this.shippers.filter(s => s.Id != id)}); 
-                 
-}
+  eliminar(id: number) {
+
+    this.services.deleteShippers(id).subscribe(resp => {
+      this.shippers = this.shippers.filter(s => s.Id != id)
+      this.mensaje = 'Elimnado con exito'
+      setTimeout(() => {
+        this.mensaje = '';
+      }, 3000);
+    },
+      error => {
+        this.mensaje = 'ups, no se pudo eliminar'
+        setTimeout(() => {
+          this.mensaje = '';
+        }, 3000);
+      });
+  }
 
 
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Shippers } from 'src/app/interface/IShippers';
 import { ShippersServicesService } from 'src/app/services/shippers-services.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-agregar-shippers',
@@ -11,10 +13,20 @@ import { ShippersServicesService } from 'src/app/services/shippers-services.serv
 export class AgregarShippersComponent implements OnInit {
 
   formulario:FormGroup;
+  shippers:Shippers = {
+    Id:0,
+    Nombre:'',
+    Telefono:''    
+  }
 
-  constructor(private fb:FormBuilder , private service: ShippersServicesService) 
+  mensaje: string = ''
+
+  constructor(private fb:FormBuilder , private service: ShippersServicesService,
+              private activateRoute:ActivatedRoute,
+              private router:Router) 
   {
     this.formulario= this.fb.group({
+      Id:[0],
       Nombre:['', [Validators.required]],
       Telefono:['', [Validators.required]]
     })
@@ -22,8 +34,18 @@ export class AgregarShippersComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log(this.formulario.status);
+    if (this.router.url.includes('editar')) {
+      this.activateRoute.params
+          .pipe(
+            switchMap(({id})=> this.service.getShippersById(id))
+          )
+          .subscribe(s => {
+            this.shippers = s
+            this.formulario.setValue(s)
+          })
+    }
   }
+
 
   Guardar(){
     
@@ -34,9 +56,20 @@ export class AgregarShippersComponent implements OnInit {
       Nombre: this.formulario.get('Nombre')?.value,
       Telefono: this.formulario.get('Telefono')?.value
     }
-    this.service.postShippers(shipper).subscribe();
-    this.formulario.reset();
-    console.log(this.formulario.status);
+    if (this.shippers.Id ==0) {
+      this.service.postShippers(shipper).subscribe(resp => {
+        this.mensaje = 'Agregado con exito'
+        setTimeout(() => {
+          this.mensaje = '';
+        }, 3000);
+      });
+      this.formulario.reset();      
+    }
+    else{
+      shipper.Id = this.formulario.get('Id')?.value
+      this.service.patchShippers(shipper).subscribe();
+    }
+    this.router.navigate(['/listado'])
   }
 
   
